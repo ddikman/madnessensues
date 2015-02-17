@@ -1,0 +1,18 @@
+extends layout
+
+block title
+	There are many a star in the sky
+
+block content
+	.angel
+		div.astro.mercury
+	.angel
+		div.astro.earth
+	.angel
+		div.astro.venus
+
+
+	p: a(href="/"): span Get me back
+
+	script(type="text/javascript").
+		$('.angel').draggable({ stack: '.angel'});

@@ -1,0 +1,32 @@
+block variables
+
+doctype html
+html(lang="en")
+  head
+    - var title = title || "Madness Returns"
+    title #{title}
+    script(type="text/javascript",src="/script/jquery-2.1.3.min.js")
+    script(type="text/javascript",src="/script/jquery-ui.min.js")
+    script(type="text/javascript",src="/script/jquery.ui.touch-punch.min.js")
+    link(rel="stylesheet",type="text/css",href="/theme/theme.css")
+
+  body
+    #top-background
+    #main-page
+      #frame
+        #frame-top(style="display: none")
+        #content(style="display: none")
+          block content
+        #frame-bottom(style="display: none")
+
+
+    script(type="text/javascript").
+      var duration = 500;
+      var options = { direction: 'down' };
+      var effect = 'drop';
+
+      $('#frame-top').show(effect, options, duration, function(){
+        $('#content').show(effect, options, duration, function(){
+          $('#frame-bottom').show(effect, options, duration);
+        });
+      });

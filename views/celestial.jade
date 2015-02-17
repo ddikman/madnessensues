@@ -1,0 +1,79 @@
+block variables
+	- title = "The angelic texts"
+
+extends layout
+
+block content
+	p.large#text
+		span Amongst the papers there lies a stone tablet, perhaps it is a key of sorts?
+	div#answer(style="display:none")
+		p.large
+			span Thank you! Thank you! Thank you! Shouts the little devil as he skips around, now finally I can hunt down those feathery fancies! Here take this as a token of my gratitude, he says and hands you a shining red ruby, I'm sure you can get something nice for it.
+		p.large
+			span You possess a ruby! If ever finding yourself in need of something to give someone this would surely make a perfect offering.
+	#letters
+	p#pressed-letters
+	p: a(href="/"): span Take me back
+
+	script(type="text/javascript").
+
+		var text = "";
+
+		jQuery.fn.rotate = function(degrees) {
+		    $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
+		                 '-moz-transform' : 'rotate('+ degrees +'deg)',
+		                 '-ms-transform' : 'rotate('+ degrees +'deg)',
+		                 'transform' : 'rotate('+ degrees +'deg)'});
+		    return $(this);
+		};
+
+		var answer = "angel";
+
+		$('#answer').hide();
+
+		var addInput = function(input){
+			text = text + input;
+			if(text == answer)
+			{
+				$('.letter-box').fadeOut('slow');
+				$('#text').fadeOut('slow', function(){
+						$('#answer').fadeIn("slow");
+					});
+			}
+			else if(text.length >= answer.length || answer.indexOf(text) != 0)
+			{
+				$('.letter-box').fadeOut('slow', function(){
+					$(this).removeClass('toggled');
+					$(this).fadeIn('slow');
+				});
+				text = "";
+			}
+		};
+
+		var letters = "abcdefghiklmnopqrstvxyz";
+		var lettersElement = $('#letters');
+		for(i = 0; i < letters.length; ++i)
+			lettersElement.append('<div class="angelic letter-box unselectable">' + letters[i] + "</p>");
+
+		lettersElement.append('<div style="clear: both"></div>');
+
+		$('.letter-box').each(function(){
+			$(this).rotation = 0;
+		});
+
+		$('.letter-box').click(function(){
+			var item = $(this);
+			if(item.hasClass("toggled"))
+				return;
+
+			item.fadeOut(100, function(){
+				item.toggleClass('toggled');
+				item.fadeIn(100);
+			})
+
+			var input = $(this).text();
+			setTimeout(function(){
+				addInput(input);
+			}, 200);
+			;
+		});

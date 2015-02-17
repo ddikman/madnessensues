@@ -1,0 +1,26 @@
+block variables
+	- title = "The great tome of Alice'sness"
+
+extends layout
+
+block content
+	p
+		span What can I do you for?
+		br
+		span.input-container
+			input#action(type="text")
+		br
+
+	script(type="text/javascript").
+
+		$('#action').on('input', function(){
+			var currentInput = $('#action').val();
+			$.get( "/api/page/" + currentInput, function(data) {
+				if(data.success)
+				{
+					$('#main-page').fadeOut('slow', function(){
+						window.location = data.url;
+					});
+				}
+			});
+		});

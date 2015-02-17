@@ -1,0 +1,163 @@
+
+@font-face {
+    font-family: alice;
+    src: url('/theme/alice-font.ttf');
+}
+
+@font-face {
+    font-family: theban;
+    src: url('/theme/theban-font.ttf');
+}
+
+@font-face {
+    font-family: angelic;
+    src: url('/theme/AngelicR100.ttf');
+}
+
+html {
+	overflow: -moz-scrollbars-vertical;
+    overflow: scroll;
+}
+
+body {
+	background-image: url('/images/background-tile.png');
+	background-repeat: repeat;
+	margin: 0;
+
+}
+
+#top-background{
+	background-image: url('/images/background-slice.png');
+	background-repeat: repeat-x;
+	z-index: 5;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 1600px;
+}
+
+#main-page{
+	z-index: 100;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+#frame{
+	margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+#frame-top{
+	background-image: url('/images/frame-top.png');
+	height: 256px;
+	width: 100%;    
+}
+
+#frame-bottom{
+	background-image: url('/images/frame-bottom.png');
+	height: 256px;
+	width: 100%;
+}
+
+p {
+	font-family: alice;
+	font-size: 38px;
+	text-align: center;
+	color: #dbd49c;
+}
+
+.theban {
+	font-family: theban;
+	color: #dbd49c;
+	font-size: 38px;
+}
+
+.angelic {
+	font-family: angelic;
+	color: #dbd49c;
+	font-size: 38px;
+}
+
+.center{
+	text-align: center;
+}
+
+.large {
+	font-size: 60px;
+}
+
+input[type="text"]{
+	background: url('/images/input.png') no-repeat;
+	width: 280px; /* image width 400 - padding on both sides */
+	height: 210px;
+	border: none;
+	font-family: alice;
+	font-size: 30px;
+	padding: 0 15px;
+	text-align: center;
+}
+
+input[type="text"]:focus{
+	background: url('/images/input-focused.png') no-repeat;
+	border: none;
+	outline: 0;
+}
+
+a:link, a:visited {
+	color: #1b63f5;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	color: #528bff;
+	text-decoration: none;
+}
+
+
+.angel {
+	width: 256px;
+	height: 90px;
+	padding-top: 75px;
+	background: url('/images/angelic-border-small.png');
+}
+
+.astro {
+	width: 64px;
+	height: 64px;
+	margin: 0 96px;
+}
+
+.earth { 	background-image: url('/images/astro/earth.png'); }
+.mercury { 	background-image: url('/images/astro/mercury.png'); }
+.venus { 	background-image: url('/images/astro/venus.png'); }
+
+#letters{
+	text-align: center;
+}
+
+.letter-box {
+	margin: 15px;
+	width: 200px;
+	height: 135px;
+	padding-top: 80px;
+	font-size: 80px;
+	background-image: url('/images/small-square-border.png');
+	display: inline-block;
+	color: #1b63f5;
+}
+
+.letter-box.toggled {
+	background-image: url('/images/small-square-border-toggled.png');
+	color: #dbd49c;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
