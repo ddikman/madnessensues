@@ -1,4 +1,5 @@
 var express = require('express');
+var log = require("npmlog");
 var app = express();
 var fs = require('fs');
 var config = require("./config");
@@ -43,11 +44,9 @@ app.get('/*', function(req, res, next){
 	res.render("invalid");
 });
 
-var server = app.listen(process.env.PORT || config.port, function () {
+var port = process.env.PORT || config.port;
+var server = app.listen(port, function () {
 
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.info('general', 'Server started at port %s', port);
 
 });
