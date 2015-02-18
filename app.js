@@ -21,13 +21,9 @@ app.get('/api/page/:page_name', function(req, res){
 
 	var success = pageExists(req.params.page_name);
 
-	var responseHost = req.hostname;
-	if(req.port == undefined || req.port != 80)
-		responseHost = responseHost + ":" + req.port;
-
 	res.json({
 		success: success,
-		url: responseHost + "/" + req.params.page_name
+		url: req.protocol + "://" + req.get("host") + "/" + req.params.page_name
 	});
 
 });
