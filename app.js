@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var config = require("./config");
 
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
@@ -19,9 +20,13 @@ app.get('/api/page/:page_name', function(req, res){
 
 	var success = pageExists(req.params.page_name);
 
+	var responseHost = req.hostname;
+	if(req.port != 80)
+		responseHost = responseHost + ":" + req.port;
+
 	res.json({
 		success: success,
-		url: "http://192.168.1.56:3000/" + req.params.page_name
+		url: responseHost + "/" + req.params.page_name
 	});
 
 });
@@ -38,7 +43,7 @@ app.get('/*', function(req, res, next){
 	res.render("invalid");
 });
 
-var server = app.listen(80, function () {
+var server = app.listen(config.port, function () {
 
   var host = server.address().address;
   var port = server.address().port;
