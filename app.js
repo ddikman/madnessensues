@@ -47,6 +47,6 @@ app.get('/*', function(req, res, next){
 var port = process.env.PORT || config.port;
 var server = app.listen(port, function () {
 
-  console.info('general', 'Server started at port %s', port);
+  log.info('general', 'Server started at port %s', port);
 
 });
